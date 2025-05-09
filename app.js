@@ -28,7 +28,7 @@ function show(req, res) {
     // recuperiamo l'id e trasformiamolo in numero
     const id = req.params.id
 
-    const sql = 'SELECT * FROM movies';
+    const sql = 'SELECT * FROM movies id = ?';
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         res.json(results);
