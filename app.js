@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 )
 
 app.get('/movies', index)
-app.get('movies/:id', show)
+app.get('/movies/:id', show)
 
 
 
