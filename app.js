@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
 
 )
 
-app.get('/movies', index,)
-
+app.get('/movies', index)
+app.get('movies/:id', show)
 
 
 
@@ -22,6 +22,15 @@ function index(req, res) {
         res.json(results);
     });
 }
+
+function show(req, res) {
+
+    // recuperiamo l'id e trasformiamolo in numero
+    const id = req.params.id
+
+
+}
+
 
 app.listen(port, () => {
     console.log("server attivo sulla porta:" + " " + port)
