@@ -8,11 +8,12 @@ const connection = require('./data/movie_db')
 //     res.send('benvenuto nella mia webapp movies') spostati in routers
 // })
 
-app.get('/movies', index)
-app.get('/movies/:id', show)
+// app.get('/movies', index)
+// app.get('/movies/:id', show)
 
 const moviesRouter = require("./routers/movies")
 
+// collega tutte le rotte che iniziano con movies
 app.use("/movies", moviesRouter)
 
 
