@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const port = 3000
+const errorsHandler = require("./middlewares/errorsHandler")
 
 // app.get('/', (req, res) => {
 //     res.send('benvenuto nella mia webapp movies') spostate le rotte in routers
