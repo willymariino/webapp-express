@@ -4,14 +4,12 @@ const port = 3000
 
 const connection = require('./data/movie_db')
 
-app.get('/', (req, res) => {
-    res.send('benvenuto nella mia webapp movies')
-}
+// app.get('/', (req, res) => {
+//     res.send('benvenuto nella mia webapp movies') spostati in routers
+// })
 
-)
-
-app.get('/movies', index)
-app.get('/movies/:id', show)
+// app.get('/movies', index)
+// app.get('/movies/:id', show)
 
 
 
