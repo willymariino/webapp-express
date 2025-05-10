@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const port = 3000
 
-const connection = require('./data/movie_db')
+
 
 // app.get('/', (req, res) => {
 //     res.send('benvenuto nella mia webapp movies') spostati in routers
