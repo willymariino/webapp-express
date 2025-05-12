@@ -6,7 +6,7 @@ function index(req, res) {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         res.json(results.map(result => ({
             ...result,
-            image: "http://127.0.0.1:3000/movies/" + result.image
+            image: "http://127.0.0.1:3000/movies_cover/" + result.image
 
         })));
     });

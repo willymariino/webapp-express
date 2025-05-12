@@ -21,6 +21,7 @@ const homeRouter = require("./routers/home")
 // collega tutte le rotte che iniziano con movies
 app.use("/movies", moviesRouter)
 app.use("/", homeRouter)
+app.use("/movies_cover", express.static("movies_cover"))
 
 app.use(errorsHandler)
 app.use(notFound)
