@@ -15,10 +15,11 @@ const notFound = require("./middlewares/notFound")
 
 const moviesRouter = require("./routers/movies")
 const homeRouter = require("./routers/home")
-
+const cors = require("cors")
 
 
 // collega tutte le rotte che iniziano con movies
+app.use(cors())
 app.use("/movies", moviesRouter)
 app.use("/", homeRouter)
 app.use("/movies_cover", express.static("movies_cover"))
