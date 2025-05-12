@@ -2,10 +2,10 @@ const mysql = require('mysql2');
 
 // creiamo l'oggetto di connessione
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'movie_db'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // connettiamoci
