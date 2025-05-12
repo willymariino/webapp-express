@@ -13,16 +13,15 @@ function index(req, res) {
 }
 
 function show(req, res) {
-
-    // recuperiamo l'id e trasformiamolo in numero
-    const id = req.params.id
-
+    const id = req.params.id;
     const sql = 'SELECT * FROM movies WHERE id = ?';
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         if (results.length === 0) return res.status(404).json({ error: "film non trovato" });
-        res.json(results[0]);
+        res.json({
+            ...results[0],
+            image: "http://127.0.0.1:3000/movies_cover/" + results[0].image
+        });
     });
 }
-
 module.exports = { index, show }
