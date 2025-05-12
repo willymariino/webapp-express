@@ -16,12 +16,14 @@ const notFound = require("./middlewares/notFound")
 const moviesRouter = require("./routers/movies")
 const homeRouter = require("./routers/home")
 
-app.use(errorsHandler)
-app.use(notFound)
+
 
 // collega tutte le rotte che iniziano con movies
 app.use("/movies", moviesRouter)
 app.use("/", homeRouter)
+
+app.use(errorsHandler)
+app.use(notFound)
 
 
 app.listen(port, () => {
