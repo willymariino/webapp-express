@@ -4,7 +4,7 @@ function index(req, res) {
     const sql = `SELECT 
     movies.*, AVG (reviews.vote) AS media_recensioni 
     FROM movies LEFT JOIN reviews ON movies.id = reviews.movies_id
-    GROUP BY movies.id`;
+    GROUP BY movies.id`
 
 
     connection.query(sql, (err, results) => {
