@@ -24,7 +24,7 @@ reviews.id AS reviews_id,
 reviews.vote,
 reviews.text
  FROM movies
- LEFT JOIN reviews ON movies.id = reviews.movie_id WHERE movies.id = ?'`
+ LEFT JOIN reviews ON movies.id = reviews.movie_id WHERE movies.id = ?`
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         if (results.length === 0) return res.status(404).json({ error: "film non trovato" });
