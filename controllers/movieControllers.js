@@ -3,7 +3,7 @@ const connection = require('../data/movie_db')
 function index(req, res) {
     const sql = `SELECT 
     movies.*, AVG (reviews.vote) AS media_recensioni 
-    FROM movies LEFT JOIN reviews ON movies.id = reviews.movies.id
+    FROM movies LEFT JOIN reviews ON movies.id = reviews.movies_id
     GROUP BY movies.id`;
 
 
