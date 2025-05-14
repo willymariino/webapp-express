@@ -35,6 +35,7 @@ function show(req, res) {
         if (results.length === 0)
 
             return res.status(404).json({ error: "film non trovato" });
+
         const movie = ({
             ...results[0],
             image: "http://127.0.0.1:3000/movies_cover/" + results[0].image
@@ -61,7 +62,7 @@ function show(req, res) {
             })
         }
         movie.reviews = results;
-        res.json(movies);
+        res.json(movie);
     })
 
 }
