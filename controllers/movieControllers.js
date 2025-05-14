@@ -24,7 +24,7 @@ ROUND(AVG(reviews.vote), 2) AS reviews_vote
 FROM 
 movies
 LEFT JOIN
-reviews ON books.id = reviews.book_id
+reviews ON movies.id = reviews.movie_id
     WHERE movies.id = ?`
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
@@ -35,13 +35,13 @@ reviews ON books.id = reviews.book_id
         });
     });
     // recensioni
-    const sqlReviews = "SELECT * FROM movies_db.reviews WHERE book_id = ?"
+    const sqlReviews = "SELECT * FROM movies.reviews WHERE movie_id = ?"
     connection.query(sqlReviews, [id], (err, results) => {
         if (err) {
             console.log(err)
         }
         movie.reviews = results;
-        res.json(movie);
+        res.json(movies);
     })
 
 }
