@@ -53,7 +53,7 @@ function show(req, res) {
 
             }
 
-            if (results.lenght === 0) {
+            if (results.length === 0) {
                 return res.status(404).json({
                     status: "404",
                     error: "movies not found"
