@@ -69,5 +69,13 @@ function show(req, res) {
 
 }
 
+function store(req, res) {
 
-module.exports = { index, show }
+    // idedentificativo libro
+    const id = req.params.id
+
+
+}
+
+
+module.exports = { index, show, store }
