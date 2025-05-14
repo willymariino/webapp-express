@@ -40,30 +40,32 @@ function show(req, res) {
             ...results[0],
             image: "http://127.0.0.1:3000/movies_cover/" + results[0].image
         });
+
+        const sqlReviews = `SELECT reviews.* FROM reviews
+    join movies ON movies.id = reviews.movie_id
+    WHERE movies.id = ?`;
+        connection.query(sqlReviews, [id], (err, results) => {
+            if (err) {
+                return res.status(500).json({
+                    status: "500",
+                    error: "Query error"
+                })
+
+            }
+
+            if (results.lenght === 0) {
+                return res.status(404).json({
+                    status: "404",
+                    error: "movies not found"
+                })
+            }
+            movie.reviews = results;
+            res.json(movie);
+        })
+
     });
     // recensioni
 
-    const sqlReviews = `SELECT reviews.* FROM reviews
-    join movies ON movies.id = reviews.movie_id
-    WHERE movies.id = ?`;
-    connection.query(sqlReviews, [id], (err, results) => {
-        if (err) {
-            return res.status(500).json({
-                status: "500",
-                error: "Query error"
-            })
-
-        }
-
-        if (results.lenght === 0) {
-            return res.status(404).json({
-                status: "404",
-                error: "movies not found"
-            })
-        }
-        movie.reviews = results;
-        res.json(movie);
-    })
 
 }
 
