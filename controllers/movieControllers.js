@@ -19,26 +19,46 @@ function index(req, res) {
 
 function show(req, res) {
     const id = req.params.id;
+    // prima query dettaglio movie
     const sql = `SELECT movies.*,
-ROUND(AVG(reviews.vote), 2) AS reviews_vote
-FROM 
-movies
-LEFT JOIN
-reviews ON movies.id = reviews.movie_id
-    WHERE movies.id = ?`
+                ROUND(AVG(reviews.vote), 2) AS reviews_vote
+                FROM movies
+                LEFT JOIN
+                reviews ON movies.id = reviews.movie_id
+                  WHERE movies.id = ?
+                GROUP BY movies.id`
     connection.query(sql, [id], (err, results) => {
-        if (err) return res.status(500).json({ error: 'Database query failed' });
-        if (results.length === 0) return res.status(404).json({ error: "film non trovato" });
-        res.json({
+        if (err)
+
+            return res.status(500).json({ error: 'Database query failed' });
+
+        if (results.length === 0)
+
+            return res.status(404).json({ error: "film non trovato" });
+        const movie = ({
             ...results[0],
             image: "http://127.0.0.1:3000/movies_cover/" + results[0].image
         });
     });
     // recensioni
-    const sqlReviews = "SELECT * FROM movies.reviews WHERE movie_id = ?"
+
+    const sqlReviews = `SELECT reviews.* FROM reviews
+    join movies ON movies.id = reviews.movie_id
+    WHERE movies.id = ?`;
     connection.query(sqlReviews, [id], (err, results) => {
         if (err) {
-            console.log(err)
+            return res.status(500).json({
+                status: "500",
+                error: "Query error"
+            })
+
+        }
+
+        if (results.lenght === 0) {
+            return res.status(404).json({
+                status: "404",
+                error: "movies not found"
+            })
         }
         movie.reviews = results;
         res.json(movies);
