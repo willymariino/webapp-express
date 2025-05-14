@@ -20,11 +20,12 @@ function index(req, res) {
 function show(req, res) {
     const id = req.params.id;
     const sql = `SELECT movies.*,
-reviews.id AS reviews_id,
-reviews.vote,
-reviews.text
- FROM movies
- LEFT JOIN reviews ON movies.id = reviews.movie_id WHERE movies.id = ?`
+ROUND(AVG(reviews.vote), 2) AS reviews_vote
+FROM 
+movies
+LEFT JOIN
+reviews ON books.id = reviews.book_id
+    WHERE movies.id = ?`
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         if (results.length === 0) return res.status(404).json({ error: "film non trovato" });
@@ -33,5 +34,17 @@ reviews.text
             image: "http://127.0.0.1:3000/movies_cover/" + results[0].image
         });
     });
+    // recensioni
+    const sqlReviews = "SELECT * FROM movies_db.reviews WHERE book_id = ?"
+    connection.query(sqlReviews, [id], (err, results) => {
+        if (err) {
+            console.log(err)
+        }
+        movie.reviews = results;
+        res.json(movie);
+    })
+
 }
+
+
 module.exports = { index, show }
