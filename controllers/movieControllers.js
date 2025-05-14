@@ -74,6 +74,28 @@ function store(req, res) {
     // idedentificativo libro
     const id = req.params.id
 
+    const { name, vote, text } = req.body
+
+    const sql = `INSERT INTO movies.reviews (movie_id, name, vote, text) VALUES (?, ?, ?)`
+
+    connection.query(sql[id, name, vote, text], (err, results) => {
+
+        if (err) {
+            return res.status(500).json({
+                errorMessage: err.sqlMessage
+            })
+        }
+
+        res.status(201);
+        res.json({
+            id,
+            name,
+            vote,
+            text
+        })
+
+    })
+
 
 }
 
