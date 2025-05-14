@@ -5,7 +5,7 @@ const movieController = require("../controllers/movieControllers")
 
 router.get("/", movieController.index)
 router.get("/:id", movieController.show)
-router.post("/:id", movieController.store)
+router.post("/:id/reviews", movieController.store)
 
 
 module.exports = router
