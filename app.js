@@ -23,6 +23,7 @@ app.use(cors())
 app.use("/movies", moviesRouter)
 app.use("/", homeRouter)
 app.use("/movies_cover", express.static("movies_cover"))
+app.use(express.json())
 
 app.use(errorsHandler)
 app.use(notFound)
