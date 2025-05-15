@@ -76,7 +76,7 @@ function store(req, res) {
 
     const { name, vote, text } = req.body
 
-    const sql = `INSERT INTO movies.reviews (movie_id, name, vote, text) VALUES (?, ?, ?, ?)`
+    const sql = `INSERT INTO reviews (movie_id, name, vote, text) VALUES (?, ?, ?, ?)`
 
     const values = [id, name, vote, text]
 
