@@ -101,5 +101,16 @@ function store(req, res) {
 
 }
 
+function destroy(req, res) {
+    // recuperiamo l'id dall' URL 
+    const { id } = req.params;
 
-module.exports = { index, show, store }
+    //Eliminiamo la pizza dal menu                       
+    connection.query('DELETE FROM reviews WHERE id = ?', [id], (err) => {
+        if (err) return res.status(500).json({ error: 'Failed to delete review' });
+        res.sendStatus(204)
+    })
+}
+
+
+module.exports = { index, show, store, destroy }
