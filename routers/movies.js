@@ -6,7 +6,7 @@ const movieController = require("../controllers/movieControllers")
 router.get("/", movieController.index)
 router.get("/:id", movieController.show)
 router.post("/:id/reviews", movieController.store)
-router.delete("/:id/reviews", movieController.destroy)
+router.delete("/:id/", movieController.destroy)
 
 
 module.exports = router
