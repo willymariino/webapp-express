@@ -9,7 +9,7 @@ The API is consumed by the frontend React application hosted in a separate repos
 
 ## Project Overview
 
-The backend exposes a RESTful API that provides movie data and related reviews. It connects to a MySQL database, handles CRUD operations, and serves as the data layer for the frontend client.
+The backend exposes a RESTful API that provides movie data and related reviews. It connects to a MySQL database, handles database operations (read & write), and serves as the data layer for the frontend client.
 
 ## Getting Started
 
@@ -52,8 +52,8 @@ webapp-express/
 | GET    | /movies/:id        | Fetch movie details and reviews   |
 | POST   | /movies/:id        | Add a review for a movie          |
 
-Only reviews can be created via the API. Movie data is read-only.  
-CORS is enabled to allow requests from the React frontend
+All POST requests expect a JSON payload. 
+CORS is enabled to allow requests from the React frontend.
 
 ---
 
@@ -68,4 +68,4 @@ DB_PASSWORD=your_mysql_password
 DB_NAME=movie_db
 PORT=3000
 ```
-
+Make sure to restart the server after modifying enviroment variables
