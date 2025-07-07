@@ -11,7 +11,7 @@ The API is consumed by the frontend React application hosted in a separate repos
 
 The backend exposes a RESTful API that provides movie data and related reviews. It connects to a MySQL database, handles database operations (read & write), and serves as the data layer for the frontend client.
 
-## Getting Started
+## Getting Started 
 
 For full setup and environment configuration instructions, refer to the **"How to Run Locally"** section in the frontend repository’s README:
 
